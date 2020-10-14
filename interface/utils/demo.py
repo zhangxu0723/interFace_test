@@ -13,9 +13,10 @@ class RunMain(object):
         return res
 
     def run_main(self, url, method, data=None, headers=None):
-        res = None
-        if method == 'GET':
+        if method.upper() == 'GET':
             res = self.send_get(url, data, headers)
-        elif method == 'POST':
+        elif method.upper() == 'POST':
             res = self.send_post(url, data, headers)
+        else:
+            return None
         return res

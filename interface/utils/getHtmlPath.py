@@ -12,7 +12,3 @@ class get_htmlPath(object):
         for i in dir_list[:-1]:
             os.remove(self.get_path() + "\\" + i)
         return dir_list[-1]
-
-
-if __name__ == '__main__':
-    print(get_htmlPath().html_list())

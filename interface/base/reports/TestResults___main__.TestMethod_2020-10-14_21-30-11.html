@@ -11,9 +11,9 @@
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">this is test</h2>
-                <p class='attribute'><strong>Start Time: </strong>2020-10-13 23:18:36</p>
-                <p class='attribute'><strong>Duration: </strong>179 ms</p>
-                <p class='attribute'><strong>Summary: </strong>Total: 2, Pass: 1, Fail: 1</p>
+                <p class='attribute'><strong>Start Time: </strong>2020-10-14 21:30:11</p>
+                <p class='attribute'><strong>Duration: </strong>79 ms</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 2, Pass: 0, Fail: 1, Error: 1</p>
             </div>
         </div>
         <div class="row">
@@ -27,16 +27,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class='success'>
-                            <td class="col-xs-10">test_01</td>
-                            <td class="col-xs-1">
-                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
-                            </td>
-                            <td class="col-xs-1">
-                            </td>
-                        </tr>
                         <tr class='danger'>
-                            <td class="col-xs-10">test_02</td>
+                            <td class="col-xs-10">test_01</td>
                             <td class="col-xs-1">
                                 <span class="label label-danger" style="display:block;width:40px;">Fail</span>
                             </td>
@@ -45,16 +37,35 @@
                             </td>
                         </tr>
                         <tr style="display:none;">
-                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">AssertionError: False is not true</p><p style="color:maroon;">Traceback (most recent call last):
-  File "D:/learn_python/interFace_test/interface/base/test_method.py", line 29, in test_02
-    self.assertTrue(res["errcode"] == 10000)
-AssertionError: False is not true
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">AssertionError: </p><p style="color:maroon;">Traceback (most recent call last):
+  File "D:/learn_python/interface/base/test_method.py", line 21, in test_01
+    assert (res["errcode"] == 10000)
+AssertionError
+CRITICAL:root:{'errcode': 20009, 'errdetail': '填入的service已存在', 'errmsg': 'EXISTING_ELEMENT', 'data': None}
+</p>
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_02</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">TypeError: 'NoneType' object is not subscriptable</p><p style="color:maroon;">Traceback (most recent call last):
+  File "D:/learn_python/interface/base/test_method.py", line 32, in test_02
+    assert (res["errcode"] == 20009)
+TypeError: 'NoneType' object is not subscriptable
+CRITICAL:root:None
 </p>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 2, Pass: 1, Fail: 1 -- Duration: 179 ms
+                                Total: 2, Pass: 0, Fail: 1, Error: 1 -- Duration: 79 ms
                             </td>
                         </tr>
                     </tbody>
@@ -62,7 +73,7 @@ AssertionError: False is not true
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $('td').on('click', '.btn', function(e){

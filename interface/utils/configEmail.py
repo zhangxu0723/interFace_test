@@ -3,6 +3,7 @@ import smtplib
 import base64
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from interface.utils.getHtmlPath import get_htmlPath
 
 
 class SendEmail(object):
@@ -52,3 +53,18 @@ class SendEmail(object):
         else:
             print('发送成功！')
         self.smtp.quit()
+
+
+def mail():
+    new_html = get_htmlPath()
+    htmlPath = new_html.html_list()
+    m = SendEmail(
+        username='18001098773@163.com',
+        passwd='FEHRWZTRHUDPIWZM',
+        recv=['zhangxu01@sinoiov.com'],
+        title='测试报告',
+        content='发送邮件',
+        file=f'reports//{htmlPath}',
+        ssl=True,
+    )
+    m.send_email()
