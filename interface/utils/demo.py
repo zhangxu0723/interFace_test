@@ -7,12 +7,12 @@ class RunMain(object):
     @staticmethod
     def send_get(url, data, headers):
         res = requests.get(url=url, data=json.dumps(data), headers=headers)
-        return res.json()
+        return res
 
     @staticmethod
     def send_post(url, data, headers):
         res = requests.post(url=url, data=json.dumps(data), headers=headers)
-        return res.json()
+        return res
 
     def run_main(self, url, method, data=None, headers=None):
         res = None

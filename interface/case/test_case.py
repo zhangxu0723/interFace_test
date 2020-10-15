@@ -1,48 +1,47 @@
+import json
 import logging
+import os
 import unittest
+import xlrd
 from interface.utils.demo import RunMain
-from interface.utils.handle_excel import Excel
+
+
+run = RunMain()
+excel_data = xlrd.open_workbook(os.path.dirname(__file__) + "\\" + "api.xlsx")
+table = excel_data.sheets()[0]
+rows = table.nrows
+cols = table.ncols
+index = 0
+
+
+def handle_excel():
+    if index <= rows:
+        url = table.row_values(index)[0]
+        method = table.row_values(index)[1]
+        data = json.loads(table.row_values(index)[2])
+        headers = eval(table.row_values(index)[3])
+        res = run.run_main(url, method, data, headers)
+        res_json = res.json()
+        assert (res.status_code == 200)
+        if table.row_values(index)[4] != "":
+            assert (table.row_values(index)[4] in json.dumps(res_json, ensure_ascii=False))
+        if table.row_values(index)[5] != "":
+            assert (table.row_values(index)[5] in json.dumps(res_json, ensure_ascii=False))
+        else:
+            assert True
+        if table.row_values(index)[6] != "":
+            assert (table.row_values(index)[6] in json.dumps(res_json, ensure_ascii=False))
+        else:
+            assert True
 
 
 class TestMethod(unittest.TestCase):
-    def setUp(self) -> None:
-        self.run = RunMain()
-        self.excel = Excel()
-
     def test_01(self):
-        url = "https://tsapi.amap.com/v1/track/service/add"
-        method = "post"
-        data = {
-            "key": "d152f8a6692d46b7ce09c21b1f583f65",
-            "name": "test03"
-        }
-        res = self.run.run_main(url, method, data)
-        logging.fatal(res)
-        assert (res["errcode"] == 10000)
+        global index
+        index += 1
+        handle_excel()
 
     def test_02(self):
-        url = "https://tsapi.amap.com/v1/track/service/add"
-        method = "delete"
-        data = {
-            "key": "d152f8a6692d46b7ce09c21b1f583f65",
-            "name": "test06"
-        }
-        res = self.run.run_main(url, method, data)
-        logging.fatal(res)
-        assert (res["errcode"] == 20009)
-
-    def test_03(self):
-        url = "https://test-ebs.utrailer.cn/api/web/order/list"
-        method = "post"
-        data = {"head": {"sequenceCode": "60472556-97f3-4229-51e1-6050535a07f3", "callType": "H5",
-                         "protocolVersion": "2.0", "appVersion": "2.0.0", "systemVersion": "11.2.2", "bizId": "7",
-                         "requestTime": 1602752911000, "mobileModel": "iPhone"},
-                "body": {"pageSize": 30, "pageNum": 1, "sortField": "", "sortOrder": "", "status": "ALL"},
-                "sign": "25991ba0237dc398cfa24e55201380ef"}
-        headers = {
-            "tokenid": "40e19653-ed79-4283-86d0-dda06654b3ac",
-            "content-type": "text/plain"
-        }
-        res = self.run.run_main(url, method, data, headers)
-        logging.fatal(res)
-        assert (res["head"]["errorMessage"] == "操作成功")
+        global index
+        index += 1
+        handle_excel()

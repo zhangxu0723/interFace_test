@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>this is test</title>
+    <title>2020-10-15test case</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -10,10 +10,10 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h2 class="text-capitalize">this is test</h2>
-                <p class='attribute'><strong>Start Time: </strong>2020-10-14 21:30:11</p>
-                <p class='attribute'><strong>Duration: </strong>79 ms</p>
-                <p class='attribute'><strong>Summary: </strong>Total: 2, Pass: 0, Fail: 1, Error: 1</p>
+                <h2 class="text-capitalize">2020-10-15test case</h2>
+                <p class='attribute'><strong>Start Time: </strong>2020-10-15 23:26:21</p>
+                <p class='attribute'><strong>Duration: </strong>343 ms</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 2, Pass: 2</p>
             </div>
         </div>
         <div class="row">
@@ -21,51 +21,31 @@
                 <table class='table table-hover table-responsive'>
                     <thead>
                         <tr>
-                            <th>__main__.TestMethod</th>
+                            <th>interface.case.test_case.TestMethod</th>
                             <th>Status</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class='danger'>
+                        <tr class='success'>
                             <td class="col-xs-10">test_01</td>
                             <td class="col-xs-1">
-                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
                             </td>
                             <td class="col-xs-1">
-                                <button class="btn btn-default btn-xs">View</button>
                             </td>
                         </tr>
-                        <tr style="display:none;">
-                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">AssertionError: </p><p style="color:maroon;">Traceback (most recent call last):
-  File "D:/learn_python/interface/base/test_method.py", line 21, in test_01
-    assert (res["errcode"] == 10000)
-AssertionError
-CRITICAL:root:{'errcode': 20009, 'errdetail': '填入的service已存在', 'errmsg': 'EXISTING_ELEMENT', 'data': None}
-</p>
-                            </td>
-                        </tr>
-                        <tr class='warning'>
+                        <tr class='success'>
                             <td class="col-xs-10">test_02</td>
                             <td class="col-xs-1">
-                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
                             </td>
                             <td class="col-xs-1">
-                                <button class="btn btn-default btn-xs">View</button>
-                            </td>
-                        </tr>
-                        <tr style="display:none;">
-                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">TypeError: 'NoneType' object is not subscriptable</p><p style="color:maroon;">Traceback (most recent call last):
-  File "D:/learn_python/interface/base/test_method.py", line 32, in test_02
-    assert (res["errcode"] == 20009)
-TypeError: 'NoneType' object is not subscriptable
-CRITICAL:root:None
-</p>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 2, Pass: 0, Fail: 1, Error: 1 -- Duration: 79 ms
+                                Total: 2, Pass: 2 -- Duration: 343 ms
                             </td>
                         </tr>
                     </tbody>
