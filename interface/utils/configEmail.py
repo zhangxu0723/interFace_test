@@ -67,4 +67,4 @@ def mail():
         file=f'reports//{htmlPath}',
         ssl=True,
     )
-    m.send_email()
+    # m.send_email()
