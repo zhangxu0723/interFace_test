@@ -3,6 +3,7 @@ import json
 import requests
 
 
+# 重新封装请求参数
 class RunMain(object):
     @staticmethod
     def send_get(url, data, headers):
@@ -15,7 +16,6 @@ class RunMain(object):
         return res
 
     def run_main(self, url, method, data=None, headers=None):
-        res = None
         if method.upper() == 'GET':
             res = self.send_get(url, data, headers)
         elif method.upper() == 'POST':

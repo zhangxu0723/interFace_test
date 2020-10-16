@@ -6,6 +6,8 @@ from email.mime.multipart import MIMEMultipart
 from interface.utils.getHtmlPath import get_htmlPath
 
 
+
+# 发送邮件方法
 class SendEmail(object):
     def __init__(self, username, passwd, recv, title, content,
                  file=None, ssl=False,
