@@ -7,7 +7,10 @@ import requests
 class RunMain(object):
     @staticmethod
     def send_get(url, data, headers):
-        res = requests.get(url=url, data=json.dumps(data), headers=headers)
+        if data is not None:
+            res = requests.get(url=url, data=json.dumps(data), headers=headers)
+        else:
+            res = requests.get(url=url, headers=headers)
         return res
 
     @staticmethod

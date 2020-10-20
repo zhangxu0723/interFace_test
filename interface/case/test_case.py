@@ -4,10 +4,9 @@ import unittest
 import xlrd
 from interface.utils.demo import RunMain
 
-
 # 创建请求对象实例
 run = RunMain()
-# 打开html文档
+# 打开excel文档
 excel_data = xlrd.open_workbook(os.path.dirname(__file__) + "\\" + "api.xlsx")
 table = excel_data.sheets()[0]
 # 行数
@@ -22,24 +21,34 @@ def handle_excel():
         # 从excel中读取url，请求方法，请求参数，请求头
         url = table.row_values(index)[0]
         method = table.row_values(index)[1]
-        data = json.loads(table.row_values(index)[2])
-        headers = eval(table.row_values(index)[3])
+        if table.row_values(index)[2] == "None" or "":
+            data = None
+        else:
+            data = json.loads(table.row_values(index)[2])
+        if table.row_values(index)[3] == "None" or "":
+            headers = None
+        else:
+            headers = eval(table.row_values(index)[3])
         res = run.run_main(url, method, data, headers)
-        res_json = res.json()
         # 先断言url返回的结果，一般为200才继续后面流程
-        assert (res.status_code == 200)
-        # 特征1必须有，判断特征1是否在返回的数据中
-        if table.row_values(index)[4] != "":
-            assert (table.row_values(index)[4] in json.dumps(res_json, ensure_ascii=False))
-        # 特征2，3可以有，判断特征2,3是否在返回的数据中
-        if table.row_values(index)[5] != "":
-            assert (table.row_values(index)[5] in json.dumps(res_json, ensure_ascii=False))
-        else:
-            assert True
-        if table.row_values(index)[6] != "":
-            assert (table.row_values(index)[6] in json.dumps(res_json, ensure_ascii=False))
-        else:
-            assert True
+        if method.upper() == "POST":
+            res_json = res.json()
+            assert (res.status_code == 200)
+            # 特征1必须有，判断特征1是否在返回的数据中
+            if table.row_values(index)[4] != "":
+                assert (table.row_values(index)[4] in json.dumps(res_json, ensure_ascii=False))
+            # 特征2，3可以有，判断特征2,3是否在返回的数据中
+            if table.row_values(index)[5] != "":
+                assert (table.row_values(index)[5] in json.dumps(res_json, ensure_ascii=False))
+            else:
+                assert True
+            if table.row_values(index)[6] != "":
+                assert (table.row_values(index)[6] in json.dumps(res_json, ensure_ascii=False))
+            else:
+                assert True
+        # get请求只判断返回的code
+        elif method.upper() == "GET":
+            assert (res.status_code == 200)
 
 
 class TestMethod(unittest.TestCase):
@@ -53,3 +62,12 @@ class TestMethod(unittest.TestCase):
         global index
         index += 1
         handle_excel()
+
+    def test_03(self):
+        global index
+        index += 1
+        handle_excel()
+
+
+if __name__ == '__main__':
+    TestMethod().test_03()
