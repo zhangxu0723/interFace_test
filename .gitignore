@@ -4,10 +4,11 @@ __pycache__/
 *$py.class
 *.xml
 *.iml
-
+*.json
 # C extensions
 *.so
-
+*.txt
+*.csv
 # Distribution / packaging
 .Python
 build/
